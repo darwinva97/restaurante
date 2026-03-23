@@ -1,0 +1,122 @@
+---
+---
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=80" alt="Comida peruana" loading="eager" />
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <span class="hero-badge">&#128293; Miraflores, Lima</span>
+    <h1 class="hero-title">La Aut&eacute;ntica<br/>Cocina Peruana</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-subtitle">Sabores que cuentan historias</p>
+    <div class="hero-actions">
+      <a href="/menu/" class="btn btn-primary">Ver Men&uacute;</a>
+      <a href="#reservas" class="btn btn-outline">Reservar Mesa</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Descubre m&aacute;s</span>
+    <div class="scroll-arrow">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(26, 26, 46, 0.7) 0%,
+      rgba(26, 26, 46, 0.5) 50%,
+      rgba(26, 26, 46, 0.8) 100%
+    );
+    z-index: 1;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+  }
+  .hero-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: rgba(212, 165, 116, 0.2);
+    border: 1px solid rgba(212, 165, 116, 0.4);
+    border-radius: 30px;
+    font-size: 0.9rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+  }
+  .hero-title {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  }
+  .hero-divider {
+    width: 100px;
+    height: 3px;
+    background: var(--gold-gradient);
+    margin: 1.5rem auto;
+    border-radius: 2px;
+  }
+  .hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 2.5rem;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .scroll-arrow {
+    margin-top: 0.5rem;
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(8px); }
+    60% { transform: translateY(4px); }
+  }
+</style>

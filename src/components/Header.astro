@@ -1,0 +1,160 @@
+---
+---
+<header class="site-header" id="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      <span class="logo-icon">&#128293;</span>
+      <span class="logo-text">Fuego & Saz&oacute;n</span>
+    </a>
+
+    <nav class="nav-desktop">
+      <a href="/">Inicio</a>
+      <a href="/menu/">Men&uacute;</a>
+      <a href="/#nosotros">Nosotros</a>
+      <a href="/#reservas">Reservas</a>
+      <a href="/#delivery">Delivery</a>
+      <a href="/#contacto">Contacto</a>
+    </nav>
+
+    <a href="/#reservas" class="btn btn-gold header-cta">Reservar Mesa</a>
+
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <nav class="nav-mobile" id="nav-mobile">
+    <a href="/">Inicio</a>
+    <a href="/menu/">Men&uacute;</a>
+    <a href="/#nosotros">Nosotros</a>
+    <a href="/#reservas">Reservas</a>
+    <a href="/#delivery">Delivery</a>
+    <a href="/#contacto">Contacto</a>
+    <a href="/#reservas" class="btn btn-gold" style="margin-top:1rem;">Reservar Mesa</a>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(26, 26, 46, 0.85);
+    backdrop-filter: blur(10px);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .site-header.scrolled {
+    background: rgba(26, 26, 46, 0.98);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+  }
+  .logo-icon {
+    font-size: 1.8rem;
+  }
+  .logo-text {
+    background: linear-gradient(135deg, #fff, #d4a574);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .nav-desktop {
+    display: flex;
+    gap: 2rem;
+  }
+  .nav-desktop a {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    font-weight: 500;
+    position: relative;
+  }
+  .nav-desktop a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+  .nav-desktop a:hover {
+    color: white;
+  }
+  .nav-desktop a:hover::after {
+    width: 100%;
+  }
+  .header-cta {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.85rem;
+  }
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .menu-toggle span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: 0.3s ease;
+  }
+  .nav-mobile {
+    display: none;
+    flex-direction: column;
+    padding: 1rem 1.5rem 2rem;
+    background: rgba(26, 26, 46, 0.98);
+  }
+  .nav-mobile a {
+    color: rgba(255, 255, 255, 0.85);
+    padding: 0.75rem 0;
+    font-size: 1.05rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .nav-mobile a:hover { color: var(--gold); }
+
+  @media (max-width: 900px) {
+    .nav-desktop, .header-cta { display: none; }
+    .menu-toggle { display: flex; }
+    .nav-mobile.open { display: flex; }
+  }
+</style>
+
+<script>
+  const header = document.getElementById('site-header');
+  const toggle = document.getElementById('menu-toggle');
+  const mobile = document.getElementById('nav-mobile');
+
+  window.addEventListener('scroll', () => {
+    header?.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  toggle?.addEventListener('click', () => {
+    mobile?.classList.toggle('open');
+  });
+
+  document.querySelectorAll('.nav-mobile a').forEach(link => {
+    link.addEventListener('click', () => mobile?.classList.remove('open'));
+  });
+</script>

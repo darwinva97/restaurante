@@ -1,0 +1,265 @@
+---
+import Page from '../../layouts/Page.astro';
+import MenuCategories from '../../components/MenuCategories.astro';
+
+const entradas = [
+  { name: "Causa Limeña", desc: "Papa amarilla prensada con ají amarillo, rellena de pollo o atún con palta", price: "S/ 28", badge: "Popular" },
+  { name: "Papa a la Huancaína", desc: "Papas sancochadas bañadas en crema de ají amarillo, queso y galletas", price: "S/ 22", badge: "" },
+  { name: "Tequeños de Lomo Saltado", desc: "Masa crocante rellena de lomo saltado con salsa criolla", price: "S/ 26", badge: "Nuevo" },
+  { name: "Anticuchos de Corazón", desc: "Brochetas de corazón de res marinadas en ají panca, con papas doradas", price: "S/ 32", badge: "Popular" },
+  { name: "Tamales Criollos", desc: "Tamales de maíz rellenos de pollo o cerdo, envueltos en hoja de plátano", price: "S/ 18", badge: "" },
+  { name: "Choritos a la Chalaca", desc: "Mejillones frescos con cebolla, tomate, choclo y limón", price: "S/ 28", badge: "" },
+  { name: "Ocopa Arequipeña", desc: "Papas bañadas en salsa de huacatay, ají mirasol, maní y queso fresco", price: "S/ 24", badge: "" },
+  { name: "Chicharrón de Calamar", desc: "Aros de calamar apanados con salsa tártara y limón", price: "S/ 30", badge: "Nuevo" },
+];
+
+const ceviches = [
+  { name: "Ceviche Clásico", desc: "Pescado fresco del día marinado en limón, cebolla morada, ají limo y cilantro", price: "S/ 38", badge: "Popular" },
+  { name: "Ceviche Mixto", desc: "Pescado, langostinos, calamares y pulpo en leche de tigre", price: "S/ 48", badge: "" },
+  { name: "Ceviche Nikkei", desc: "Pescado en leche de tigre con toque de soya, sésamo y jengibre", price: "S/ 45", badge: "Nuevo" },
+  { name: "Tiradito de Pescado", desc: "Láminas finas de pescado en crema de ají amarillo y rocoto", price: "S/ 42", badge: "" },
+  { name: "Leche de Tigre Fuego", desc: "Nuestra leche de tigre con trozos de pescado, langostinos y canchita", price: "S/ 32", badge: "Popular" },
+];
+
+const fondos = [
+  { name: "Lomo Saltado", desc: "Lomo fino salteado al wok con cebolla, tomate, ají amarillo, soya y papas fritas", price: "S/ 42", badge: "Popular" },
+  { name: "Ají de Gallina", desc: "Pollo deshilachado en crema de ají amarillo, nueces y queso con arroz", price: "S/ 35", badge: "" },
+  { name: "Arroz con Mariscos", desc: "Arroz con langostinos, calamares, conchas y pulpo en salsa de ají panca", price: "S/ 48", badge: "Popular" },
+  { name: "Seco de Cordero", desc: "Cordero guisado en salsa de cilantro con frejoles y yuca", price: "S/ 44", badge: "" },
+  { name: "Tacu Tacu con Lomo", desc: "Arroz con frejoles refrito, acompañado de lomo fino y salsa criolla", price: "S/ 46", badge: "Nuevo" },
+  { name: "Arroz con Pato", desc: "Arroz verde con pato guisado, cilantro y cerveza negra", price: "S/ 42", badge: "" },
+  { name: "Pescado a lo Macho", desc: "Filete de pescado frito bañado en salsa de mariscos picante", price: "S/ 48", badge: "" },
+  { name: "Carapulcra con Sopa Seca", desc: "Papa seca guisada con cerdo y gallina, acompañada de fideos al pesto", price: "S/ 38", badge: "" },
+];
+
+const parrilla = [
+  { name: "Parrilla Fuego & Sazón", desc: "Mixta para 2: anticuchos, chuleta, chorizo, mollejas con papas y ensalada", price: "S/ 120", badge: "Para compartir" },
+  { name: "Bife de Chorizo", desc: "350g de bife a la parrilla con chimichurri, papas rústicas y ensalada", price: "S/ 58", badge: "" },
+  { name: "Pollo a la Brasa (1/2)", desc: "Medio pollo marinado en especias, a la brasa con papas y ensalada", price: "S/ 35", badge: "Popular" },
+  { name: "Chuleta Ahumada", desc: "Chuleta de cerdo ahumada con glaseado de maracuyá y camotes", price: "S/ 44", badge: "Nuevo" },
+];
+
+const postres = [
+  { name: "Suspiro a la Limeña", desc: "Manjar blanco con merengue de oporto y canela", price: "S/ 18", badge: "Popular" },
+  { name: "Picarones", desc: "Aros de camote y zapallo fritos con miel de chancaca", price: "S/ 16", badge: "" },
+  { name: "Tres Leches", desc: "Bizcocho empapado en tres leches con crema batida y frutos rojos", price: "S/ 20", badge: "" },
+  { name: "Mazamorra Morada", desc: "Postre tradicional de maíz morado con frutas secas y canela", price: "S/ 14", badge: "" },
+  { name: "Brownie con Lúcuma", desc: "Brownie tibio con helado de lúcuma y salsa de chocolate", price: "S/ 22", badge: "Nuevo" },
+];
+
+const bebidas = [
+  { name: "Pisco Sour", desc: "Pisco quebranta, limón, jarabe, clara de huevo y amargo de angostura", price: "S/ 28", badge: "Popular" },
+  { name: "Chilcano de Pisco", desc: "Pisco, ginger ale, limón y amargo de angostura", price: "S/ 22", badge: "" },
+  { name: "Maracuyá Sour", desc: "Pisco con maracuyá fresca, limón y jarabe de goma", price: "S/ 26", badge: "" },
+  { name: "Chicha Morada", desc: "Refresco tradicional de maíz morado, piña, canela y clavo", price: "S/ 10", badge: "" },
+  { name: "Emoliente", desc: "Bebida caliente de cebada, cola de caballo, limón y miel", price: "S/ 8", badge: "" },
+  { name: "Limonada Frozen", desc: "Limonada helada con hierbabuena y un toque de miel", price: "S/ 12", badge: "" },
+  { name: "Cerveza Artesanal", desc: "Selección de cervezas artesanales peruanas (consultar carta)", price: "S/ 18", badge: "Nuevo" },
+  { name: "Agua / Gaseosa", desc: "Agua mineral San Mateo o gaseosas", price: "S/ 6", badge: "" },
+];
+
+const wines = [
+  { name: "Tacama Blanco Reserva", desc: "Vino blanco seco, Ica", price: "S/ 65" },
+  { name: "Tacama Rosé", desc: "Vino rosado semi-seco, Ica", price: "S/ 60" },
+  { name: "Intipalka Malbec", desc: "Vino tinto, Ica", price: "S/ 75" },
+  { name: "Tabernero Gran Tinto", desc: "Vino tinto reserva, Ica", price: "S/ 85" },
+  { name: "Santiago Queirolo Intipalka Tannat", desc: "Vino tinto premium, Ica", price: "S/ 95" },
+  { name: "Copa de Vino (Tinto/Blanco)", desc: "Selección de la casa", price: "S/ 18" },
+];
+
+const sections = [
+  { id: "entradas", title: "Entradas", items: entradas },
+  { id: "ceviches", title: "Ceviches", items: ceviches },
+  { id: "platos-de-fondo", title: "Platos de Fondo", items: fondos },
+  { id: "parrilla", title: "Parrilla", items: parrilla },
+  { id: "postres", title: "Postres", items: postres },
+  { id: "bebidas", title: "Bebidas", items: bebidas },
+];
+---
+<Page title="Menú | Fuego & Sazón" description="Descubre nuestro menú completo: ceviches, lomo saltado, anticuchos, postres y cócteles peruanos.">
+
+  <section class="menu-hero">
+    <div class="menu-hero-bg">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920&q=80" alt="Mesa del restaurante" loading="eager" />
+    </div>
+    <div class="menu-hero-overlay"></div>
+    <div class="container menu-hero-content">
+      <h1>Nuestro Men&uacute;</h1>
+      <div class="gold-divider"></div>
+      <p>Cada plato cuenta una historia de tradici&oacute;n, pasi&oacute;n y los mejores ingredientes del Per&uacute;.</p>
+    </div>
+  </section>
+
+  <MenuCategories />
+
+  {sections.map((section) => (
+    <section class="menu-section" id={section.id}>
+      <div class="container">
+        <h2 class="menu-section-title">{section.title}</h2>
+        <div class="gold-divider"></div>
+        <div class="menu-items">
+          {section.items.map((item) => (
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <div class="menu-item-header">
+                  <h3>{item.name}</h3>
+                  {item.badge && (
+                    <span class={`badge ${item.badge === 'Popular' ? 'badge-popular' : 'badge-new'}`}>{item.badge}</span>
+                  )}
+                </div>
+                <p>{item.desc}</p>
+              </div>
+              <div class="menu-item-price">{item.price}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="menu-section wine-section" id="vinos">
+    <div class="container">
+      <h2 class="menu-section-title">Carta de Vinos</h2>
+      <div class="gold-divider"></div>
+      <p class="wine-intro">Selecci&oacute;n de los mejores vinos peruanos para acompa&ntilde;ar tu comida.</p>
+      <div class="menu-items">
+        {wines.map((wine) => (
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h3>{wine.name}</h3>
+              <p>{wine.desc}</p>
+            </div>
+            <div class="menu-item-price">{wine.price}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-cta section section-dark">
+    <div class="container text-center">
+      <h2>&#191;Listo para una experiencia inolvidable?</h2>
+      <div class="gold-divider"></div>
+      <p class="section-subtitle">Reserva tu mesa o p&iacute;delo por delivery. Te esperamos.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="/#reservas" class="btn btn-gold">Reservar Mesa</a>
+        <a href="/#delivery" class="btn btn-outline">Pedir Delivery</a>
+      </div>
+    </div>
+  </section>
+
+</Page>
+
+<style>
+  .menu-hero {
+    position: relative;
+    height: 45vh;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .menu-hero-bg {
+    position: absolute;
+    inset: 0;
+  }
+  .menu-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .menu-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(26, 26, 46, 0.75);
+  }
+  .menu-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding-top: 40px;
+  }
+  .menu-hero-content h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+  }
+  .menu-hero-content p {
+    max-width: 550px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.1rem;
+  }
+
+  .menu-section {
+    padding: 3.5rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+  .menu-section:nth-child(even) {
+    background: var(--warm);
+  }
+  .menu-section-title {
+    text-align: center;
+    color: var(--primary);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+  }
+  .menu-items {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+  }
+  .menu-item:last-child {
+    border-bottom: none;
+  }
+  .menu-item-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .menu-item-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--primary);
+  }
+  .menu-item-info p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+    line-height: 1.5;
+  }
+  .menu-item-price {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--secondary);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .wine-intro {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+  .wine-section {
+    background: var(--primary) !important;
+    color: white;
+  }
+  .wine-section .menu-section-title { color: white; }
+  .wine-section .menu-item-info h3 { color: white; }
+  .wine-section .menu-item-info p { color: rgba(255, 255, 255, 0.6); }
+  .wine-section .menu-item-price { color: var(--gold); }
+  .wine-section .menu-item { border-bottom-color: rgba(255, 255, 255, 0.1); }
+  .wine-section .wine-intro { color: rgba(255, 255, 255, 0.6); }
+
+  .menu-cta { padding: 4rem 0; }
+  .menu-cta h2 { color: white; }
+</style>

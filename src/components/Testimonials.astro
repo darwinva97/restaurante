@@ -1,0 +1,113 @@
+---
+const testimonials = [
+  {
+    name: "María del Carmen Flores",
+    role: "Google Reviews",
+    stars: 5,
+    text: "El mejor ceviche de Miraflores, sin duda. Fresco, abundante y con ese toque que solo una cocina con amor puede dar. ¡Volveremos!",
+    avatar: "MF",
+  },
+  {
+    name: "Carlos Eduardo Quispe",
+    role: "TripAdvisor",
+    stars: 5,
+    text: "Llevé a mi familia un domingo y todos quedaron encantados. El lomo saltado es espectacular y el ají de gallina de la abuela es increíble. Atención de primera.",
+    avatar: "CQ",
+  },
+  {
+    name: "Lucía Mendoza Vargas",
+    role: "Google Reviews",
+    stars: 5,
+    text: "Pedimos delivery por primera vez y la comida llegó caliente y bien presentada. Los anticuchos son adictivos. Ya somos clientes frecuentes.",
+    avatar: "LM",
+  },
+];
+---
+<section class="testimonials section section-warm">
+  <div class="container">
+    <span class="test-eyebrow">Testimonios</span>
+    <h2 class="section-title">Lo que dicen nuestros comensales</h2>
+    <div class="gold-divider"></div>
+
+    <div class="test-grid">
+      {testimonials.map((t) => (
+        <article class="test-card">
+          <div class="stars">{"★".repeat(t.stars)}</div>
+          <p class="test-quote">"{t.text}"</p>
+          <div class="test-author">
+            <div class="test-avatar">{t.avatar}</div>
+            <div>
+              <strong>{t.name}</strong>
+              <span>{t.role}</span>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .test-eyebrow {
+    display: block;
+    text-align: center;
+    color: var(--gold);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .test-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .test-card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease;
+  }
+  .test-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+  .test-quote {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text);
+    margin: 1rem 0 1.5rem;
+    font-style: italic;
+  }
+  .test-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .test-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+  .test-author strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--primary);
+  }
+  .test-author span {
+    font-size: 0.8rem;
+    color: var(--text-light);
+  }
+  @media (max-width: 992px) {
+    .test-grid { grid-template-columns: 1fr; max-width: 550px; margin: 0 auto; }
+  }
+</style>

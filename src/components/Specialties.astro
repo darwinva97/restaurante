@@ -1,0 +1,135 @@
+---
+const specialties = [
+  {
+    title: "Ceviche del Día",
+    description: "Preparado con la pesca más fresca del día, directo del Terminal Pesquero. Una experiencia marina única que cambia con cada estación.",
+    price: "Desde S/ 42",
+    image: "https://images.unsplash.com/photo-1582234372722-50d7ccc30ebd?w=800&q=80",
+    badge: "Fresco del día",
+  },
+  {
+    title: "Parrilla Fuego & Sazón",
+    description: "Nuestra parrilla mixta para 2 personas: anticuchos, chuleta, chorizo artesanal, mollejas y más. Acompañada de papas y ensalada.",
+    price: "S/ 120 para 2",
+    image: "https://images.unsplash.com/photo-1558030006-450675393462?w=800&q=80",
+    badge: "Para compartir",
+  },
+  {
+    title: "Menú Ejecutivo",
+    description: "De lunes a viernes al mediodía. Entrada, plato de fondo, postre y bebida. Cambia cada día con lo mejor de nuestra cocina.",
+    price: "S/ 25",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
+    badge: "Lun - Vie",
+  },
+];
+---
+<section class="specialties section section-dark">
+  <div class="container">
+    <span class="spec-eyebrow">Especiales</span>
+    <h2 class="section-title">No te puedes perder</h2>
+    <div class="gold-divider"></div>
+    <p class="section-subtitle">Nuestras propuestas m&aacute;s queridas, pensadas para hacer de tu visita algo especial.</p>
+
+    <div class="spec-grid">
+      {specialties.map((item) => (
+        <article class="spec-card">
+          <div class="spec-image">
+            <img src={item.image} alt={item.title} loading="lazy" />
+            <div class="spec-overlay">
+              <span class="spec-badge">{item.badge}</span>
+            </div>
+          </div>
+          <div class="spec-content">
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+            <div class="spec-price">{item.price}</div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .spec-eyebrow {
+    display: block;
+    text-align: center;
+    color: var(--gold);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .spec-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .spec-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(212, 165, 116, 0.3);
+  }
+  .spec-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+  }
+  .spec-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .spec-card:hover .spec-image img {
+    transform: scale(1.05);
+  }
+  .spec-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26, 26, 46, 0.8), transparent 60%);
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+  }
+  .spec-badge {
+    background: var(--gold);
+    color: var(--primary);
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .spec-content {
+    padding: 1.5rem;
+  }
+  .spec-content h3 {
+    font-size: 1.3rem;
+    color: white;
+    margin-bottom: 0.75rem;
+  }
+  .spec-content p {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+  }
+  .spec-price {
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+  @media (max-width: 992px) {
+    .spec-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+  }
+</style>

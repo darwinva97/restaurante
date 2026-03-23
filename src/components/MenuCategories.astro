@@ -1,0 +1,71 @@
+---
+const categories = [
+  { name: "Entradas", icon: "🥗", count: 8 },
+  { name: "Ceviches", icon: "🐟", count: 5 },
+  { name: "Platos de Fondo", icon: "🍛", count: 8 },
+  { name: "Parrilla", icon: "🔥", count: 4 },
+  { name: "Postres", icon: "🍮", count: 5 },
+  { name: "Bebidas", icon: "🍹", count: 8 },
+];
+---
+<section class="menu-cats">
+  <div class="container">
+    <div class="cats-grid">
+      {categories.map((cat) => (
+        <a href={`/menu/#${cat.name.toLowerCase().replace(/ /g, '-')}`} class="cat-card">
+          <span class="cat-icon">{cat.icon}</span>
+          <h4 class="cat-name">{cat.name}</h4>
+          <span class="cat-count">{cat.count} platos</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .menu-cats {
+    padding: 3rem 0;
+    background: var(--warm);
+  }
+  .cats-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+  }
+  .cat-card {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+  .cat-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+  .cat-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .cat-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+  }
+  .cat-count {
+    font-size: 0.8rem;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  @media (max-width: 992px) {
+    .cats-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .cats-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
